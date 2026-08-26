@@ -9,7 +9,7 @@ params.slope = params.B / params.T_chirp;
 params.fs_adc = 10e6;
 params.N_samples = 256;
 
-params.N_chirps = 512;
+params.N_chirps = 1024;
 params.T_frame = 20e-3;
 params.CRI = params.T_frame;
 

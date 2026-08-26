@@ -43,11 +43,11 @@ ax4 = subplot(2,2,4);
 p4 = plot(nan, nan, 'y', 'LineWidth', 1.2);
 set(ax4, 'Color','k', 'XColor','w', 'YColor','w');
 xlabel('Time [s]'); ylabel('Phase [rad]');
-title('Breathing Signal (Target 1)', 'Color','w');
+title('Breathing Signal', 'Color','w');
 grid on; set(ax4, 'GridColor',[0.3 0.3 0.3]);
 
 [~, bin1] = min(abs(r_ax - targets(1).range));
-step = 4;
+step = 2;
 ra_accum = zeros(half, N_ang);
 
 pause(0.5);
@@ -87,8 +87,8 @@ for chirp = 1:step:M
 
     title(ax1, sprintf('IF Signal (chirp %d/%d)', chirp, M), 'Color','w');
 
-    if chirp > 50
-        N_resp = 1024;
+    if chirp > 100
+        N_resp = 2048;
         fs_s = 1/params.T_frame;
         sp = abs(fft(ph_clean, N_resp));
         fr = (0:N_resp-1)*fs_s/N_resp;
@@ -102,7 +102,7 @@ for chirp = 1:step:M
     end
 
     drawnow;
-    pause(0.03);
+    pause(0.05);
 end
 
 fprintf('Live display complete.\n');

@@ -67,10 +67,8 @@ adc_biased = adc_raw + params.adc_vref/2;
 adc_amped = max(0, min(adc_biased * params.amp_gain, params.adc_vref));
 adc_quant = adc_quantize(adc_amped, params.adc_vref, params.adc_bits);
 
-fprintf('\nDetected targets:\n');
-for k = 1:min(length(locs), length(targets))
-    fprintf('  T%d: R=%.2fm (actual %.1f), Ang=%.1f deg (actual %.1f), Vel=%.2f m/s\n', ...
-        k, det_ranges(k), targets(k).range, det_angles(k), targets(k).angle, det_vels(k));
-end
-fprintf('  Breathing (T1): %.1f BPM estimated (actual: %.1f BPM)\n\n', ...
+fprintf('\nDetected target:\n');
+fprintf('  Range=%.2fm (actual %.1f), Angle=%.1f deg (actual %.1f)\n', ...
+    det_ranges(1), targets(1).range, det_angles(1), targets(1).angle);
+fprintf('  Breathing: %.1f BPM estimated (actual: %.1f BPM)\n\n', ...
     est_bpm, targets(1).breath_rate);
